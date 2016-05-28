@@ -16,7 +16,7 @@ from skimage.morphology import closing, square
 from skimage.color import rgb2grey, label2rgb
 from skimage.util import pad
 
-image = io.imread('ToyotaLogo.jpg')
+image = io.imread('sampleBenz.jpg')
 #image = io.imread('LexusLogo.png')
 greyImage = rgb2grey(image)
 

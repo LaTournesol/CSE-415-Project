@@ -16,10 +16,11 @@ from skimage.morphology import closing, square
 from skimage.color import rgb2grey, label2rgb
 
 #image = io.imread('sampleAudi.png')
-#image = io.imread('sampleAudi2.jpg')
+image = io.imread('sampleAudi2.jpg')
 #image = io.imread('sampleToyota.jpg')
 #image = io.imread('sampleHonda.jpg')
 #image = io.imread('sampleBenz.jpg')
+#image = io.imread('sampleBMW3.jpg')
 
 greyImage = rgb2grey(image)
 greyImage = transform.resize(greyImage, (500, 600))
