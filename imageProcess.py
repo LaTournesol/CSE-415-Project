@@ -65,13 +65,12 @@ def crop(a):
     return a[minr:maxr, minc:maxc]
 
 
-logos = ['audi', 'bmw', 'chevrolet', 'honda', 'lexus', 'toyota', 'volkswagon']
+logos = ['audi', 'bmw', 'chevrolet', 'honda', 'lexus', 'toyota', 'volkswagon', 'benz']
 #logos = ['audi']
 for logo in logos:
     num = 1
     for image in glob.glob('./Logos/' + logo + '/*.*'):
-        if not image.startswith('./Logos/' + logo + '/' + logo) and (
-                image.endswith('.jpg') or image.endswith('.jpeg') or image.endswith('.png') or image.endswith('.bmp')):
+        if  image.endswith('.jpg') or image.endswith('.jpeg') or image.endswith('.png') or image.endswith('.bmp'):
             inputPath = image
             outputPath = getOutputPath(image.split('/'), logo, num)
             num += 1
