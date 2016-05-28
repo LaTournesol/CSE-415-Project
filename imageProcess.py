@@ -65,7 +65,7 @@ def crop(a):
     return a[minr:maxr, minc:maxc]
 
 
-logos = ['bmw', 'chevrolet', 'honda', 'lexus', 'toyota', 'volkswagon']
+logos = ['audi', 'bmw', 'chevrolet', 'honda', 'lexus', 'toyota', 'volkswagon']
 for logo in logos:
     num = 1
     for image in glob.glob('./Logos/' + logo + '/*.jpeg'):
