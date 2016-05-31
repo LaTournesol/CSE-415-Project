@@ -1,0 +1,4 @@
+.idea/*
+data.npz
+.idea/vcs.xml
+.DS_Store

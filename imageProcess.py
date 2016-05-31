@@ -1,4 +1,5 @@
 import glob
+import os
 import numpy as np
 
 import matplotlib.pyplot as plt
@@ -27,14 +28,15 @@ def getOutputPath(l, logo, num):
 
 
 
-def processOneImage(inputPath, outputPath):
+def processOneImage(inputPath, outputPaths):
     image = io.imread(inputPath)
     greyImage = rgb2grey(image)
     threshold = threshold_otsu(greyImage)
     imgout = closing(greyImage > threshold, square(1))
     imgout = crop(imgout)
     imgout = transform.resize(imgout, (max(imgout.shape), max(imgout.shape)))
-    io.imsave(outputPath, imgout)
+    for outputPath in outputPaths:
+        io.imsave(outputPath, imgout)
 
 
 def crop(a):
@@ -65,13 +67,22 @@ def crop(a):
     return a[minr:maxr, minc:maxc]
 
 
-#logos = ['audi', 'bmw', 'chevrolet', 'honda', 'lexus', 'toyota', 'volkswagon', 'benz']
-logos = ['volkswagon']
+if not os.path.isdir("./TrainingSet/"):
+    os.mkdir("./TrainingSet/")
+
+logos = ['audi', 'bmw', 'chevrolet', 'honda', 'lexus', 'toyota', 'volkswagon', 'benz']
+#logos = ['volkswagon']
 for logo in logos:
     num = 1
     for image in glob.glob('./Logos/' + logo + '/*.*'):
-        if  image.endswith('.jpg') or image.endswith('.jpeg') or image.endswith('.png') or image.endswith('.bmp'):
+        if image.endswith('.jpg') or image.endswith('.jpeg') or image.endswith('.png') or image.endswith('.bmp'):
             inputPath = image
-            outputPath = getOutputPath(image.split('/'), logo, num)
+            outputPath1 = getOutputPath(image.split('/'), logo, num)
+
+            outputPath2_dir = "./TrainingSet/" + logo + "/"
+            if not os.path.isdir(outputPath2_dir):
+                os.mkdir(outputPath2_dir)
+
+            outputPath2 = outputPath2_dir + str(num) + ".jpg"
             num += 1
-            processOneImage(image, outputPath)
+            processOneImage(image, [outputPath2])
