@@ -17,7 +17,7 @@ from skimage.color import rgb2grey, label2rgb
 
 #image = io.imread('sampleAudi.png')
 #image = io.imread('sampleAudi2.jpg')
-image = io.imread('sampleToyota.jpg')
+image = io.imread('sampleChevrolet.jpg')
 #image = io.imread('sampleHonda.jpg')
 #image = io.imread('sampleBenz.jpg')
 #image = io.imread('sampleBMW3.jpg')
