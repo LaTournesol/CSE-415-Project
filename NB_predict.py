@@ -120,6 +120,3 @@ def crop(a):
         else:
             break
     return a[minr:maxr, minc:maxc]
-
-
-print(predict('test_logo_toyota.png'))
