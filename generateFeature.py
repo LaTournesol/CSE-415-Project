@@ -43,30 +43,31 @@ for brand_num in range(len(brand)):
 # # End of hog test
 
 # Feature Extraction for NN
-y = np.repeat(y, 30)
-features = np.empty([len(y), 3200])
-
-row_count = 0
-for image_path in training_sample_paths:
-    image = io.imread(image_path)
-    image = transform.resize(image, (400, 400))
-    for i in range(10):
-        image_new = image * np.random.normal(1.0, 0.2) + np.random.normal(0, 0.2)
-        image_new = np.maximum(np.minimum(image, 1.0), 0.0)
-
-        image_new_dilation = morphology.dilation(image, morphology.square(2))
-        image_new_erosion = morphology.erosion(image, morphology.square(2))
-
-        features[row_count, :] = hog(image, orientations=8,
-                                     pixels_per_cell=(20, 20), cells_per_block=(1, 1))
-        features[row_count+1, :] = hog(image_new_dilation, orientations=8,
-                                       pixels_per_cell=(20, 20), cells_per_block=(1, 1))
-        features[row_count+2, :] = hog(image_new_erosion, orientations=8,
-                                       pixels_per_cell=(20, 20), cells_per_block=(1, 1))
-        row_count += 3
-    print("Extracting feature from {} out of {} images".format(row_count // 30, len(training_sample_paths)))
-
-np.savez("data", features, y)
+# y = np.repeat(y, 30)
+# features = np.empty([len(y), 3200])
+#
+# row_count = 0
+# for image_path in training_sample_paths:
+#     image = io.imread(image_path)
+#     image = transform.resize(image, (400, 400))
+#     for i in range(10):
+#         image_new = image * np.random.normal(1.0, 0.2) + np.random.normal(0, 0.2)
+#         image_new = np.maximum(np.minimum(image, 1.0), 0.0)
+#
+#         image_new_dilation = morphology.dilation(image, morphology.square(2))
+#         image_new_erosion = morphology.erosion(image, morphology.square(2))
+#
+#         features[row_count, :] = hog(image, orientations=8,
+#                                      pixels_per_cell=(20, 20), cells_per_block=(1, 1))
+#         features[row_count+1, :] = hog(image_new_dilation, orientations=8,
+#                                        pixels_per_cell=(20, 20), cells_per_block=(1, 1))
+#         features[row_count+2, :] = hog(image_new_erosion, orientations=8,
+#                                        pixels_per_cell=(20, 20), cells_per_block=(1, 1))
+#         row_count += 3
+#     print("Extracting feature from {} out of {} images".format(row_count // 30, len(training_sample_paths)))
+#
+# np.savez("data", features, y)
+# scipy.io.savemat('data.mat', {'X': features, 'y': y})
 
 
 # Feature Extraction for NB
@@ -95,18 +96,18 @@ np.savez("data", features, y)
 
 # Feature Extraction Small
 
-# features = np.empty([len(y), 3200])
-#
-# row_count = 0
-# for image_path in training_sample_paths:
-#     image = io.imread(image_path)
-#     image = transform.resize(image, (400, 400))
-#
-#     features[row_count, :] = hog(image, orientations=8,
-#                                  pixels_per_cell=(20, 20), cells_per_block=(1, 1))
-#
-#     row_count += 1
-#     print("Extracting feature from {} out of {} images".format(row_count, len(training_sample_paths)))
-#
-# np.savez("data_small", features, y)
+features = np.empty([len(y), 3200])
+
+row_count = 0
+for image_path in training_sample_paths:
+    image = io.imread(image_path)
+    image = transform.resize(image, (400, 400))
+
+    features[row_count, :] = hog(image, orientations=8,
+                                 pixels_per_cell=(20, 20), cells_per_block=(1, 1))
+
+    row_count += 1
+    print("Extracting feature from {} out of {} images".format(row_count, len(training_sample_paths)))
+
+np.savez("data_small", features, y)
 
