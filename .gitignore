@@ -1,4 +1,7 @@
 .idea/*
 *.npz
+*.npy
 .idea/vcs.xml
 .DS_Store
+*.mat
+__pycache__

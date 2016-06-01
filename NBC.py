@@ -44,7 +44,7 @@ def get_probs(features, brands):
 
 
 def get_likelihood(prob_ones, prob_zeros, brand, input):
-    
+
 
 features, brands = load_training_set('nb_data.npz')
 get_probs(features, brands)

@@ -89,24 +89,26 @@ for image_path in training_sample_paths:
 
     row_count += 3
 
+# scipy.io.savemat('data.mat', {'X': features, 'y': y})
+
     print("Extracting feature from {} out of {} images".format(row_count // 3, len(training_sample_paths)))
 
 np.savez("nb_data", features, y)
 
 # Feature Extraction Small
 
-# features = np.empty([len(y), 3200])
-#
-# row_count = 0
-# for image_path in training_sample_paths:
-#     image = io.imread(image_path)
-#     image = transform.resize(image, (400, 400))
-#
-#     features[row_count, :] = hog(image, orientations=8,
-#                                  pixels_per_cell=(20, 20), cells_per_block=(1, 1))
-#
-#     row_count += 1
-#     print("Extracting feature from {} out of {} images".format(row_count, len(training_sample_paths)))
-#
-# np.savez("data_small", features, y)
+features = np.empty([len(y), 3200])
+
+row_count = 0
+for image_path in training_sample_paths:
+    image = io.imread(image_path)
+    image = transform.resize(image, (400, 400))
+
+    features[row_count, :] = hog(image, orientations=8,
+                                 pixels_per_cell=(20, 20), cells_per_block=(1, 1))
+
+    row_count += 1
+    print("Extracting feature from {} out of {} images".format(row_count, len(training_sample_paths)))
+
+np.savez("data_small", features, y)
 
