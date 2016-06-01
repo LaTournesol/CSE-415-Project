@@ -1,3 +1,9 @@
+# Main.py
+# TianYang Jin, Sheng, Chen
+# CSE 415 Project
+#
+
+
 from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog
@@ -30,8 +36,8 @@ class App():
 
     def predict(self, image_path):
         l = []
-        # l.append(NN_predict.predictImage(image_path, 'thetas1'))
-        # l.append(NN_predict.predictImage(image_path, 'thetas2'))
+        l.append(NN_predict.predictImage(image_path, 'thetas'))
+        l.append(NN_predict.predictImage(image_path, 'thetas'))
         # l.append(NN_predict.predictImage(image_path, 'thetas3'))
         # l.append(NN_predict.predictImage(image_path, 'thetas4'))
         # l.append(NN_predict.predictImage(image_path, 'thetas5'))

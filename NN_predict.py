@@ -1,3 +1,8 @@
+# NN_predict.py
+# TianYang Jin, Sheng, Chen
+# CSE 415 Project
+#
+
 import os
 import numpy as np
 import scipy.io

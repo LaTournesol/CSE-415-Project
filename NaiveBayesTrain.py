@@ -1,3 +1,8 @@
+# NaiveBayesTrain.py
+# TianYang Jin, Sheng, Chen
+# CSE 415 Project
+#
+
 import numpy as np
 
 def get_prior_attr(training_set):

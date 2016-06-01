@@ -1,3 +1,8 @@
+# NB_predict.py
+# TianYang Jin, Sheng, Chen
+# CSE 415 Project
+#
+
 import numpy as np
 from scipy import ndimage
 from scipy import misc

@@ -1,3 +1,8 @@
+# LogoTraining.py
+# TianYang Jin, Sheng, Chen
+# CSE 415 Project
+#
+
 import numpy as np
 
 import matplotlib.pyplot as plt

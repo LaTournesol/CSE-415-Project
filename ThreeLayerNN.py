@@ -1,3 +1,8 @@
+# ThreeLayerNN.py
+# TianYang Jin, Sheng, Chen
+# CSE 415 Project
+#
+
 import numpy as np
 from scipy import optimize
 from scipy import io
