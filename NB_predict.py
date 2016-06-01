@@ -62,7 +62,7 @@ def get_likelihood(prob_ones, prob_zeros, brands, logo, input):
     return log_P + math.log(p_bi)
 
 
-def predict(input_path):
+def predict(input_path, data_path):
     logos = ['audi', 'bmw', 'chevrolet', 'honda', 'lexus', 'toyota', 'volkswagon', 'benz']
 
     # load image and resize
@@ -72,7 +72,7 @@ def predict(input_path):
     flatened_img = np.reshape(small_img, (1, 2500)).astype(np.int)[0]
 
     # generate feature and calculate probability and max likelihood
-    features, brands = load_training_set('nb_data.npz')
+    features, brands = load_training_set(data_path)
     prob_ones, prob_zeros = get_probs(features, brands)
     max_likelihood = -sys.maxsize+1
     car_index = -1

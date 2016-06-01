@@ -12,14 +12,14 @@ from skimage.morphology import closing, square
 from skimage.color import rgb2grey, label2rgb
 from skimage.util import pad
 
-def predict_Image(img_path):
+def predictImage(img_path, theta_path):
     brands = ["audi", "benz", "bmw", "chevrolet", "honda", "lexus", "toyota", "volkswagon"]
     processOneImage(img_path, './temp.jpg')
     image = io.imread('./temp.jpg')
     image = transform.resize(image, (400, 400))
 
     features = np.array([hog(image, orientations=8, pixels_per_cell=(20, 20), cells_per_block=(1, 1))])
-    thetas = np.transpose(np.load('thetas.npy'))
+    thetas = np.transpose(np.load(theta_path))
     os.remove('./temp.jpg')
 
     prediction = predict(thetas, features)

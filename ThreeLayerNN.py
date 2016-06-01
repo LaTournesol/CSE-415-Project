@@ -103,7 +103,7 @@ def predict(final_t, X):
     dummy = np.argmax(h2, 1)
     return dummy
 
-data = np.load("data_small.npz")
+data = np.load("data.npz")
 X = data['arr_0']
 y = data['arr_1']
 
@@ -123,6 +123,6 @@ final_t = optimize.fmin_cg(costFunc, init_t, fprime=gradFunc, args=(training_X, 
 
 pred = predict(final_t[0], testing_X) + 1
 
-np.save('thetas', final_t[0])
+np.save('thetas2', final_t[0])
 #io.savemat('thetas.mat', {'t_1d': final_t[0]})
-print(np.mean(pred == testing_y))
+#print(np.mean(pred == testing_y))
